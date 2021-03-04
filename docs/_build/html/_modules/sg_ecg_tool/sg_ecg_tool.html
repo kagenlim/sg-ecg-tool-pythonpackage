@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sg_ecg_tool.sg_ecg_tool &#8212; sg_ecg_tool  documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for sg_ecg_tool.sg_ecg_tool</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Python package that generates statistics on higher education and employment, for Singaporean students.</span>
+
+<span class="sd">This package will allow you to enter Subjects you are interested in, or Universities you are keen on, so that you can</span>
+<span class="sd">access statistics/information on the latest employment rates and salaries associated with certain courses. This package</span>
+<span class="sd">also contains information on the latest openings, for various industries.</span>
+
+<span class="sd">To that end, there are 7 functions in this package that provide different capabilities, to empower you on your</span>
+<span class="sd">education and career guidance journey.</span>
+
+<span class="sd">There is important information in this documentation, as there are some key permissible values that must be keyed into</span>
+<span class="sd">certain slots (&#39;arguments&#39;). It will otherwise not be possible to use this package. Where necessary, these will be</span>
+<span class="sd">reiterated throughout the documentation.</span>
+
+<span class="sd">Values for university_shortname</span>
+<span class="sd">----------</span>
+<span class="sd">This is a comprehensive list of the six autonomous universities in Singapore.</span>
+
+<span class="sd">You will need to key in the values on the left of the assignment operator (&#39;=&#39;), for the</span>
+<span class="sd">university_shortname argument. The full names of the universities are to the right of the assignment operator.</span>
+
+<span class="sd">The &#39;sg&#39; in front of the acronyms is an alias that I recommend.</span>
+<span class="sd">This can change depending on how you import this package.</span>
+
+<span class="sd">- sg.NTU = &#39;Nanyang Technological University&#39;</span>
+<span class="sd">- sg.NUS = &#39;National University of Singapore&#39;</span>
+<span class="sd">- sg.SUTD = &#39;Singapore University of Technology and Design&#39;</span>
+<span class="sd">- sg.SUSS = &#39;Singapore University of Social Sciences&#39;</span>
+<span class="sd">- sg.SIT = &#39;Singapore Institute of Technology&#39;</span>
+<span class="sd">- sg.SMU = &#39;Singapore Management University&#39;</span>
+
+<span class="sd">Values for subject</span>
+<span class="sd">----------</span>
+<span class="sd">This is a list of potential subjects you may be interested in pursuing.</span>
+
+<span class="sd">These subjects have been titled in a self-explanatory way. You just need to key them in as they are rendered here.</span>
+
+<span class="sd">The &#39;sg&#39; in front of the acronyms is an alias that I recommend.</span>
+<span class="sd">This can change depending on how you import this package.</span>
+
+<span class="sd">- sg.Business</span>
+<span class="sd">- sg.Engineering</span>
+<span class="sd">- sg.Computing</span>
+<span class="sd">- sg.Education</span>
+<span class="sd">- sg.Law</span>
+<span class="sd">- sg.Humanities_SocialSci</span>
+<span class="sd">- sg.Healthcare</span>
+<span class="sd">- sg.Science</span>
+<span class="sd">- sg.Design_Art</span>
+
+<span class="sd">Values for industry</span>
+<span class="sd">----------</span>
+<span class="sd">This is a list of potential industries you may be keen on pursuing.</span>
+
+<span class="sd">These values, unlike for the two lists above, must be entered as strings, therefore the inverted commas around them.</span>
+<span class="sd">There will be a reminder, for specific modules that utilize industry.</span>
+
+<span class="sd">- &#39;accommodation and food services&#39;,</span>
+<span class="sd">- &#39;administrative and support services&#39;,</span>
+<span class="sd">- &#39;business and real estate services&#39;,</span>
+<span class="sd">- &#39;community, social and personal services&#39;,</span>
+<span class="sd">- &#39;construction&#39;,</span>
+<span class="sd">- &#39;electrical products&#39;,</span>
+<span class="sd">- &#39;electronic products&#39;,</span>
+<span class="sd">- &#39;electronic, computer and optical products&#39;,</span>
+<span class="sd">- &#39;fabricated metal products&#39;,</span>
+<span class="sd">- &#39;fabricated metal products, machinery and equipment&#39;,</span>
+<span class="sd">- &#39;financial and insurance services&#39;,</span>
+<span class="sd">- &#39;financial intermediation&#39;,</span>
+<span class="sd">- &#39;financial services&#39;,</span>
+<span class="sd">- &#39;food, beverages and tobacco&#39;,</span>
+<span class="sd">- &#39;hotels and restaurants&#39;,</span>
+<span class="sd">- &#39;information and communications&#39;,</span>
+<span class="sd">- &#39;machinery and equipment&#39;,</span>
+<span class="sd">- &#39;medical and precision instruments&#39;,</span>
+<span class="sd">- &#39;other manufacturing industries&#39;,</span>
+<span class="sd">- &#39;others&#39;,</span>
+<span class="sd">- &#39;paper products and printing&#39;,</span>
+<span class="sd">- &#39;paper products and publishing&#39;,</span>
+<span class="sd">- &#39;paper,rubber,plastic products and printing&#39;,</span>
+<span class="sd">- &#39;petroleum and chemical products&#39;,</span>
+<span class="sd">- &#39;petroleum, chemical and pharmaceutical products&#39;,</span>
+<span class="sd">- &#39;professional services&#39;,</span>
+<span class="sd">- &#39;real estate and leasing services&#39;,</span>
+<span class="sd">- &#39;real estate services&#39;,</span>
+<span class="sd">- &#39;rubber and plastic products&#39;,</span>
+<span class="sd">- &#39;textile and wearing apparel&#39;,</span>
+<span class="sd">- &#39;transport and storage&#39;,</span>
+<span class="sd">- &#39;transport equipment&#39;,</span>
+<span class="sd">- &#39;transport, storage and communications&#39;,</span>
+<span class="sd">- &#39;transportation and storage&#39;,</span>
+<span class="sd">- &#39;wholesale and retail trade&#39;</span>
+
+<span class="sd">Enjoy!</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># university_short_name values</span>
+<span class="n">NTU</span> <span class="o">=</span> <span class="s1">&#39;Nanyang Technological University&#39;</span>
+<span class="n">NUS</span> <span class="o">=</span> <span class="s1">&#39;National University of Singapore&#39;</span>
+<span class="n">SUTD</span> <span class="o">=</span> <span class="s1">&#39;Singapore University of Technology and Design&#39;</span>
+<span class="n">SUSS</span> <span class="o">=</span> <span class="s1">&#39;Singapore University of Social Sciences&#39;</span>
+<span class="n">SIT</span> <span class="o">=</span> <span class="s1">&#39;Singapore Institute of Technology&#39;</span>
+<span class="n">SMU</span> <span class="o">=</span> <span class="s1">&#39;Singapore Management University&#39;</span>
+
+<span class="c1">##Dataset 1</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s1">&#39;https://data.gov.sg/api/action/datastore_search?resource_id=9326ca53-9153-4a9c-b93f-8ae032637b70&amp;limit=703&#39;</span><span class="p">)</span>  <span class="c1"># this limit ensures that all the observations are included</span>
+
+<span class="n">j1</span> <span class="o">=</span> <span class="n">r1</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="n">j1</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="s1">&#39;records&#39;</span><span class="p">]</span>
+
+<span class="c1"># Base list comprehensions for subjects</span>
+<span class="n">Business</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x1</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(Business|Accountancy|Management|Finance|Marketing|Estate)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">])]</span>
+
+<span class="n">Engineering</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x1</span> <span class="k">if</span>
+               <span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(Engineering)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">])</span> <span class="ow">or</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^[A-z]engineering&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">]))]</span>
+
+<span class="n">Computing</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x1</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(Comput(er|ing|ational)|Information)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">])]</span>
+
+<span class="n">Education</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x1</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(Education|Sports)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">])]</span>
+
+<span class="n">Law</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x1</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(La(w|ws))&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">])]</span>
+
+<span class="n">Humanities_SocialSci</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x1</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span>
+    <span class="sa">r</span><span class="s1">&#39;(Social|Ar(t|s)|Public|Economics|Philosophy|Psychology|Sociology|Linguistics|English|Studies|Chinese)&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">])]</span>
+
+<span class="n">Healthcare</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x1</span> <span class="k">if</span> <span class="p">(</span>
+        <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(Dental|Medicine|Nursing|Therapy|Diagnostic)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">])</span> <span class="ow">or</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^[A-z]therapy&#39;</span><span class="p">,</span>
+                                                                                             <span class="n">y</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">]))]</span>
+
+<span class="n">Science</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x1</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(Science|Biological|Chemistry|Physics)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">])]</span>
+
+<span class="n">Design_Art</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x1</span> <span class="k">if</span>
+              <span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(Fine|Culinary|Design|Media)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">])</span> <span class="ow">or</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Archi[a-z]&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">]))]</span>
+
+<span class="c1">##Dataset 2</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s1">&#39;https://data.gov.sg/api/action/datastore_search?resource_id=37e76c40-789d-422e-880e-db2689804939&amp;limit=2390&#39;</span><span class="p">)</span>
+
+<span class="n">j2</span> <span class="o">=</span> <span class="n">r2</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="n">x2</span> <span class="o">=</span> <span class="n">j2</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">][</span><span class="s1">&#39;records&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="explore_study"><a class="viewcode-back" href="../../source/sg_ecg_tool.html#sg_ecg_tool.sg_ecg_tool.explore_study">[docs]</a><span class="k">def</span> <span class="nf">explore_study</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">csv</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    If you do not know what you would like to study, this is a good start. You can key in a subject that you have some form of interest in, and get a full list of options.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    subject: List of Dicts. One of the preset list comprehensions that have been pre-defined. This is a compulsory argument to enter.</span>
+
+<span class="sd">    csv: bool. If set to true, a csv file with this information will be saved to your working directory. It is False by default.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    A Pandas DataFrame, containing the queried information regarding the subject of study.</span>
+<span class="sd">    If csv=True, a csv file will also be generated.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from sg_ecg_tool import sg_ecg_tool as sg</span>
+<span class="sd">    &gt;&gt;&gt; sg.explore_study(sg.Business)</span>
+<span class="sd">    [Dataframe of 120 rows x 13 columns]</span>
+<span class="sd">    &gt;&gt;&gt; sg.explore_stdy(sg.Healthcare)</span>
+<span class="sd">    [DataFrame of 49 rows x 13 columns]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">subject</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">csv</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="get_employed"><a class="viewcode-back" href="../../source/sg_ecg_tool.html#sg_ecg_tool.sg_ecg_tool.get_employed">[docs]</a><span class="k">def</span> <span class="nf">get_employed</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">university_shortname</span><span class="p">,</span> <span class="n">csv</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    If you already have some sense of what you might like to do, and where you might like to do it, this function can be especially helpful. This can be used in conjunction with see_employ().</span>
+
+<span class="sd">    You can key in a subject and university that you have some form of interest in, and get a full list of options.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    subject: List of Dicts. One of the preset list comprehensions that have been pre-defined. This is a compulsory argument to enter.</span>
+
+<span class="sd">    university_shortname: str. However, you can simply key in the variables that have been created as part of this package (e.g., sg.NUS, sg.NTU) for convenience. This is a compulsory argument to enter.</span>
+
+
+<span class="sd">    csv: bool. If set to true, a csv file with this information will be saved to your working directory. It is False by default.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    A Pandas DataFrame, containing the queried information regarding the subject, school of study and the employment rates.</span>
+<span class="sd">    If csv=True, a csv file will also be generated.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from sg_ecg_tool import sg_ecg_tool as sg</span>
+<span class="sd">    &gt;&gt;&gt; sg.get_employed(sg.Law, sg.SMU)</span>
+<span class="sd">    [DataFrame of 12 rows x 6 columns]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">subject</span> <span class="k">if</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;university&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">university_shortname</span><span class="p">)]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">csv</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;university&#39;</span><span class="p">,</span> <span class="s1">&#39;school&#39;</span><span class="p">,</span> <span class="s1">&#39;degree&#39;</span><span class="p">,</span> <span class="s1">&#39;employment_rate_overall&#39;</span><span class="p">,</span> <span class="s1">&#39;employment_rate_ft_perm&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;university&#39;</span><span class="p">,</span> <span class="s1">&#39;school&#39;</span><span class="p">,</span> <span class="s1">&#39;degree&#39;</span><span class="p">,</span> <span class="s1">&#39;employment_rate_overall&#39;</span><span class="p">,</span> <span class="s1">&#39;employment_rate_ft_perm&#39;</span><span class="p">]]</span></div>
+
+<div class="viewcode-block" id="see_employ"><a class="viewcode-back" href="../../source/sg_ecg_tool.html#sg_ecg_tool.sg_ecg_tool.see_employ">[docs]</a><span class="k">def</span> <span class="nf">see_employ</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">university_shortname</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     If you already have some sense of what you might like to do, and where you might like to do it, this function can be especially helpful. This can be used in conjunction with get_employed().</span>
+<span class="sd">     You can key in a subject and university that you have some form of interest in, and get a visualization of overall employment rate, over time.</span>
+
+<span class="sd">     Parameters</span>
+<span class="sd">     ----------</span>
+<span class="sd">     subject: List of Dicts. One of the preset list comprehensions that have been pre-defined. This is a compulsory argument to enter.</span>
+
+<span class="sd">     university_shortname: str. However, you can simply key in the variables that have been created as part of this package (e.g., sg.NUS, sg.NTU) for convenience. This is a compulsory argument to enter.</span>
+
+<span class="sd">     Returns</span>
+<span class="sd">     -------</span>
+<span class="sd">     A matplotlib.pyplot visualization, with year as the x-axis and mean employment rate as the y-axis.</span>
+
+<span class="sd">     Examples</span>
+<span class="sd">     --------</span>
+<span class="sd">     &gt;&gt;&gt; from sg_ecg_tool import sg_ecg_tool as sg</span>
+<span class="sd">     &gt;&gt;&gt; sg.see_employ(sg.Law, sg.SMU)</span>
+<span class="sd">     [Visualization]</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">subject</span> <span class="k">if</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;university&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">university_shortname</span><span class="p">)]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">employment_rate_overall</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="get_paid"><a class="viewcode-back" href="../../source/sg_ecg_tool.html#sg_ecg_tool.sg_ecg_tool.get_paid">[docs]</a><span class="k">def</span> <span class="nf">get_paid</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">university_shortname</span><span class="p">,</span> <span class="n">csv</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    If you are particularly interested in how much you can expect to be paid, after graduating from your intended course, this function can be especially helpful. This can be used in conjunction with see_paid().</span>
+<span class="sd">    You can key in a subject and university that you have some form of interest in, and get a full list of courses and the salary statistics of their graduates.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    subject: List of Dicts. One of the preset list comprehensions that have been pre-defined. This is a compulsory argument to enter.</span>
+
+<span class="sd">    university_shortname: str. However, you can simply key in the variables that have been created as part of this package (e.g., sg.NUS, sg.NTU) for convenience. This is a compulsory argument to enter.</span>
+
+<span class="sd">    csv: bool. If set to true, a csv file with this information will be saved to your working directory. It is False by default.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    A Pandas DataFrame, containing the queried information regarding the subject, school of study and the anticipated salary rates.</span>
+<span class="sd">    If csv=True, a csv file will also be generated.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from sg_ecg_tool import sg_ecg_tool as sg</span>
+<span class="sd">    &gt;&gt;&gt; sg.get_paid(sg.Humanities_SocialSci, sg.NTU)</span>
+<span class="sd">    [DataFrame of 96 rows x 7 columns]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">subject</span> <span class="k">if</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;university&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">university_shortname</span><span class="p">)]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">csv</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;university&#39;</span><span class="p">,</span> <span class="s1">&#39;school&#39;</span><span class="p">,</span> <span class="s1">&#39;degree&#39;</span><span class="p">,</span> <span class="s1">&#39;gross_mthly_25_percentile&#39;</span><span class="p">,</span> <span class="s1">&#39;gross_monthly_median&#39;</span><span class="p">,</span> <span class="s1">&#39;gross_mthly_75_percentile&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;university&#39;</span><span class="p">,</span> <span class="s1">&#39;school&#39;</span><span class="p">,</span> <span class="s1">&#39;degree&#39;</span><span class="p">,</span> <span class="s1">&#39;gross_mthly_25_percentile&#39;</span><span class="p">,</span> <span class="s1">&#39;gross_monthly_median&#39;</span><span class="p">,</span> <span class="s1">&#39;gross_mthly_75_percentile&#39;</span><span class="p">]]</span></div>
+
+<div class="viewcode-block" id="see_paid"><a class="viewcode-back" href="../../source/sg_ecg_tool.html#sg_ecg_tool.sg_ecg_tool.see_paid">[docs]</a><span class="k">def</span> <span class="nf">see_paid</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">university_shortname</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        If you are particularly interested in how much you can expect to be paid, after graduating from your intended course, this function can be especially helpful. This can be used in conjunction with get_paid().</span>
+
+<span class="sd">        You can key in a subject and university that you have some form of interest in, and get a visualization of gross median salary of graduates from a particular type of course and university, over time.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        subject: List of Dicts. One of the preset list comprehensions that have been pre-defined. This is a compulsory argument to enter.</span>
+
+<span class="sd">        university_shortname: str. However, you can simply key in the variables that have been created as part of this package (e.g., sg.NUS, sg.NTU) for convenience. This is a compulsory argument to enter.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        A matplotlib.pyplot visualization, with year as the x-axis and average gross monthly median salary as the y-axis.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; from sg_ecg_tool import sg_ecg_tool as sg</span>
+<span class="sd">        &gt;&gt;&gt; sg.see_paid(sg.Education, sg.NTU)</span>
+<span class="sd">     [Visualization]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">subject</span> <span class="k">if</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;university&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">university_shortname</span><span class="p">)]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">gross_monthly_median</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="explore_opening"><a class="viewcode-back" href="../../source/sg_ecg_tool.html#sg_ecg_tool.sg_ecg_tool.explore_opening">[docs]</a><span class="k">def</span> <span class="nf">explore_opening</span><span class="p">(</span><span class="n">industry2</span><span class="p">,</span> <span class="n">csv</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    If you are particularly interested in how many available job openings there are in a particular industry, this function can provide you with that information. This can be used in conjunction with see_opening().</span>
+<span class="sd">    You can key in an industry that you have some form of interest in, and get a full list of job vacancy rates, over quarters.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    industry2: str. One of the preset strings, which signify a given industry. This is a compulsory argument to enter.</span>
+
+<span class="sd">    csv: bool. If set to true, a csv file with this information will be saved to your working directory. It is False by default.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    A Pandas DataFrame, containing the queried information regarding job vacancies for a given industry.</span>
+
+<span class="sd">    If csv=True, a csv file will also be generated.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from sg_ecg_tool import sg_ecg_tool as sg</span>
+<span class="sd">    &gt;&gt;&gt; sg.explore_opening(&#39;transportation and storage&#39;)</span>
+<span class="sd">    [DataFrame of 59 rows x 5 columns]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x2</span> <span class="k">if</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;industry2&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">industry2</span><span class="p">)]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">csv</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+<div class="viewcode-block" id="see_opening"><a class="viewcode-back" href="../../source/sg_ecg_tool.html#sg_ecg_tool.sg_ecg_tool.see_opening">[docs]</a><span class="k">def</span> <span class="nf">see_opening</span><span class="p">(</span><span class="n">industry2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       If you are particularly interested in how many available job openings there are in a particular industry, this function can provide you with that information. This can be used in conjunction with explore_opening().</span>
+<span class="sd">       You can key in an industry that you have some form of interest in, and get visualization of job vacancy rates, over 7 recent quarters.</span>
+
+<span class="sd">       Parameters</span>
+<span class="sd">       ----------</span>
+<span class="sd">       industry2: str. One of the preset strings, which signify a given industry. This is a compulsory argument to enter.</span>
+
+<span class="sd">       Returns</span>
+<span class="sd">       -------</span>
+<span class="sd">       A matplotlib.pyplot visualization, with quarters as the x-axis and job vacancy rate as the y-axis.</span>
+
+<span class="sd">       Examples</span>
+<span class="sd">       --------</span>
+<span class="sd">       &gt;&gt;&gt; from sg_ecg_tool import sg_ecg_tool as sg</span>
+<span class="sd">       &gt;&gt;&gt; sg.see_opening(&#39;paper products and publishing&#39;)</span>
+<span class="sd">       [Visualization]</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x2</span> <span class="k">if</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;industry2&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">industry2</span><span class="p">)]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">job_vacancy_rate</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">quarter</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">sg_ecg_tool</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conduct.html">Code of Conduct</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Kagen Lim.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

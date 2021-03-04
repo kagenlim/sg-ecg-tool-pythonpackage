@@ -1,0 +1,11 @@
+Metadata-Version: 1.2
+Name: sg-ecg-tool
+Version: 0.1.0
+Summary: Python package that generates statistics on higher education and employment, for Singaporean students.
+Home-page: UNKNOWN
+Author: Your Name
+Author-email: you@example.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.7,<4.0

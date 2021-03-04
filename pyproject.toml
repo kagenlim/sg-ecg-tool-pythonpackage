@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "sg_ecg_tool"
+version = "0.1.0"
+description = "Python package that generates statistics on higher education and employment, for Singaporean students."
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+pandas = "^1.1.5"
+requests = "^2.25.1"
+matplotlib = "^3.3.3"
+pytest = "^6.2.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.1"
+pytest-cov = "^2.10.1"
+sphinx = "^3.3.1"
+sphinxcontrib-napoleon = "^0.7"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

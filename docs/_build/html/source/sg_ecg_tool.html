@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sg_ecg_tool package &#8212; sg_ecg_tool  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="sg-ecg-tool-package">
+<h1>sg_ecg_tool package<a class="headerlink" href="#sg-ecg-tool-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-sg_ecg_tool.sg_ecg_tool">
+<span id="sg-ecg-tool-sg-ecg-tool-module"></span><h2>sg_ecg_tool.sg_ecg_tool module<a class="headerlink" href="#module-sg_ecg_tool.sg_ecg_tool" title="Permalink to this headline">¶</a></h2>
+<p>Python package that generates statistics on higher education and employment, for Singaporean students.</p>
+<p>This package will allow you to enter Subjects you are interested in, or Universities you are keen on, so that you can
+access statistics/information on the latest employment rates and salaries associated with certain courses. This package
+also contains information on the latest openings, for various industries.</p>
+<p>To that end, there are 7 functions in this package that provide different capabilities, to empower you on your
+education and career guidance journey.</p>
+<p>There is important information in this documentation, as there are some key permissible values that must be keyed into
+certain slots (‘arguments’). It will otherwise not be possible to use this package. Where necessary, these will be
+reiterated throughout the documentation.</p>
+<div class="section" id="values-for-university-shortname">
+<h3>Values for university_shortname<a class="headerlink" href="#values-for-university-shortname" title="Permalink to this headline">¶</a></h3>
+<p>This is a comprehensive list of the six autonomous universities in Singapore.</p>
+<p>You will need to key in the values on the left of the assignment operator (‘=’), for the
+university_shortname argument. The full names of the universities are to the right of the assignment operator.</p>
+<p>The ‘sg’ in front of the acronyms is an alias that I recommend.
+This can change depending on how you import this package.</p>
+<ul class="simple">
+<li><p>sg.NTU = ‘Nanyang Technological University’</p></li>
+<li><p>sg.NUS = ‘National University of Singapore’</p></li>
+<li><p>sg.SUTD = ‘Singapore University of Technology and Design’</p></li>
+<li><p>sg.SUSS = ‘Singapore University of Social Sciences’</p></li>
+<li><p>sg.SIT = ‘Singapore Institute of Technology’</p></li>
+<li><p>sg.SMU = ‘Singapore Management University’</p></li>
+</ul>
+</div>
+<div class="section" id="values-for-subject">
+<h3>Values for subject<a class="headerlink" href="#values-for-subject" title="Permalink to this headline">¶</a></h3>
+<p>This is a list of potential subjects you may be interested in pursuing.</p>
+<p>These subjects have been titled in a self-explanatory way. You just need to key them in as they are rendered here.</p>
+<p>The ‘sg’ in front of the acronyms is an alias that I recommend.
+This can change depending on how you import this package.</p>
+<ul class="simple">
+<li><p>sg.Business</p></li>
+<li><p>sg.Engineering</p></li>
+<li><p>sg.Computing</p></li>
+<li><p>sg.Education</p></li>
+<li><p>sg.Law</p></li>
+<li><p>sg.Humanities_SocialSci</p></li>
+<li><p>sg.Healthcare</p></li>
+<li><p>sg.Science</p></li>
+<li><p>sg.Design_Art</p></li>
+</ul>
+</div>
+<div class="section" id="values-for-industry">
+<h3>Values for industry<a class="headerlink" href="#values-for-industry" title="Permalink to this headline">¶</a></h3>
+<p>This is a list of potential industries you may be keen on pursuing.</p>
+<p>These values, unlike for the two lists above, must be entered as strings, therefore the inverted commas around them.
+There will be a reminder, for specific modules that utilize industry.</p>
+<ul class="simple">
+<li><p>‘accommodation and food services’,</p></li>
+<li><p>‘administrative and support services’,</p></li>
+<li><p>‘business and real estate services’,</p></li>
+<li><p>‘community, social and personal services’,</p></li>
+<li><p>‘construction’,</p></li>
+<li><p>‘electrical products’,</p></li>
+<li><p>‘electronic products’,</p></li>
+<li><p>‘electronic, computer and optical products’,</p></li>
+<li><p>‘fabricated metal products’,</p></li>
+<li><p>‘fabricated metal products, machinery and equipment’,</p></li>
+<li><p>‘financial and insurance services’,</p></li>
+<li><p>‘financial intermediation’,</p></li>
+<li><p>‘financial services’,</p></li>
+<li><p>‘food, beverages and tobacco’,</p></li>
+<li><p>‘hotels and restaurants’,</p></li>
+<li><p>‘information and communications’,</p></li>
+<li><p>‘machinery and equipment’,</p></li>
+<li><p>‘medical and precision instruments’,</p></li>
+<li><p>‘other manufacturing industries’,</p></li>
+<li><p>‘others’,</p></li>
+<li><p>‘paper products and printing’,</p></li>
+<li><p>‘paper products and publishing’,</p></li>
+<li><p>‘paper,rubber,plastic products and printing’,</p></li>
+<li><p>‘petroleum and chemical products’,</p></li>
+<li><p>‘petroleum, chemical and pharmaceutical products’,</p></li>
+<li><p>‘professional services’,</p></li>
+<li><p>‘real estate and leasing services’,</p></li>
+<li><p>‘real estate services’,</p></li>
+<li><p>‘rubber and plastic products’,</p></li>
+<li><p>‘textile and wearing apparel’,</p></li>
+<li><p>‘transport and storage’,</p></li>
+<li><p>‘transport equipment’,</p></li>
+<li><p>‘transport, storage and communications’,</p></li>
+<li><p>‘transportation and storage’,</p></li>
+<li><p>‘wholesale and retail trade’</p></li>
+</ul>
+<p>Enjoy!</p>
+<dl class="py function">
+<dt id="sg_ecg_tool.sg_ecg_tool.explore_opening">
+<code class="sig-prename descclassname">sg_ecg_tool.sg_ecg_tool.</code><code class="sig-name descname">explore_opening</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">industry2</span></em>, <em class="sig-param"><span class="n">csv</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sg_ecg_tool/sg_ecg_tool.html#explore_opening"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sg_ecg_tool.sg_ecg_tool.explore_opening" title="Permalink to this definition">¶</a></dt>
+<dd><p>If you are particularly interested in how many available job openings there are in a particular industry, this function can provide you with that information. This can be used in conjunction with see_opening().
+You can key in an industry that you have some form of interest in, and get a full list of job vacancy rates, over quarters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>industry2</strong> (<em>str. One of the preset strings</em><em>, </em><em>which signify a given industry. This is a compulsory argument to enter.</em>) – </p></li>
+<li><p><strong>csv</strong> (<em>bool. If set to true</em><em>, </em><em>a csv file with this information will be saved to your working directory. It is False by default.</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>A Pandas DataFrame, containing the queried information regarding job vacancies for a given industry.</em></p></li>
+<li><p><em>If csv=True, a csv file will also be generated.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sg_ecg_tool</span> <span class="kn">import</span> <span class="n">sg_ecg_tool</span> <span class="k">as</span> <span class="n">sg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sg</span><span class="o">.</span><span class="n">explore_opening</span><span class="p">(</span><span class="s1">&#39;transportation and storage&#39;</span><span class="p">)</span>
+<span class="go">[DataFrame of 59 rows x 5 columns]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sg_ecg_tool.sg_ecg_tool.explore_study">
+<code class="sig-prename descclassname">sg_ecg_tool.sg_ecg_tool.</code><code class="sig-name descname">explore_study</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">subject</span></em>, <em class="sig-param"><span class="n">csv</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sg_ecg_tool/sg_ecg_tool.html#explore_study"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sg_ecg_tool.sg_ecg_tool.explore_study" title="Permalink to this definition">¶</a></dt>
+<dd><p>If you do not know what you would like to study, this is a good start. You can key in a subject that you have some form of interest in, and get a full list of options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subject</strong> (<em>List of Dicts. One of the preset list comprehensions that have been pre-defined. This is a compulsory argument to enter.</em>) – </p></li>
+<li><p><strong>csv</strong> (<em>bool. If set to true</em><em>, </em><em>a csv file with this information will be saved to your working directory. It is False by default.</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>A Pandas DataFrame, containing the queried information regarding the subject of study.</em></p></li>
+<li><p><em>If csv=True, a csv file will also be generated.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sg_ecg_tool</span> <span class="kn">import</span> <span class="n">sg_ecg_tool</span> <span class="k">as</span> <span class="n">sg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sg</span><span class="o">.</span><span class="n">explore_study</span><span class="p">(</span><span class="n">sg</span><span class="o">.</span><span class="n">Business</span><span class="p">)</span>
+<span class="go">[Dataframe of 120 rows x 13 columns]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sg</span><span class="o">.</span><span class="n">explore_stdy</span><span class="p">(</span><span class="n">sg</span><span class="o">.</span><span class="n">Healthcare</span><span class="p">)</span>
+<span class="go">[DataFrame of 49 rows x 13 columns]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sg_ecg_tool.sg_ecg_tool.get_employed">
+<code class="sig-prename descclassname">sg_ecg_tool.sg_ecg_tool.</code><code class="sig-name descname">get_employed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">subject</span></em>, <em class="sig-param"><span class="n">university_shortname</span></em>, <em class="sig-param"><span class="n">csv</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sg_ecg_tool/sg_ecg_tool.html#get_employed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sg_ecg_tool.sg_ecg_tool.get_employed" title="Permalink to this definition">¶</a></dt>
+<dd><p>If you already have some sense of what you might like to do, and where you might like to do it, this function can be especially helpful. This can be used in conjunction with see_employ().</p>
+<p>You can key in a subject and university that you have some form of interest in, and get a full list of options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subject</strong> (<em>List of Dicts. One of the preset list comprehensions that have been pre-defined. This is a compulsory argument to enter.</em>) – </p></li>
+<li><p><strong>university_shortname</strong> (<em>str. However</em><em>, </em><em>you can simply key in the variables that have been created as part of this package</em><em> (</em><em>e.g.</em><em>, </em><em>sg.NUS</em><em>, </em><em>sg.NTU</em><em>) </em><em>for convenience. This is a compulsory argument to enter.</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>csv: bool. If set to true, a csv file with this information will be saved to your working directory. It is False by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>A Pandas DataFrame, containing the queried information regarding the subject, school of study and the employment rates.</em></p></li>
+<li><p><em>If csv=True, a csv file will also be generated.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sg_ecg_tool</span> <span class="kn">import</span> <span class="n">sg_ecg_tool</span> <span class="k">as</span> <span class="n">sg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sg</span><span class="o">.</span><span class="n">get_employed</span><span class="p">(</span><span class="n">sg</span><span class="o">.</span><span class="n">Law</span><span class="p">,</span> <span class="n">sg</span><span class="o">.</span><span class="n">SMU</span><span class="p">)</span>
+<span class="go">[DataFrame of 12 rows x 6 columns]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sg_ecg_tool.sg_ecg_tool.get_paid">
+<code class="sig-prename descclassname">sg_ecg_tool.sg_ecg_tool.</code><code class="sig-name descname">get_paid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">subject</span></em>, <em class="sig-param"><span class="n">university_shortname</span></em>, <em class="sig-param"><span class="n">csv</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sg_ecg_tool/sg_ecg_tool.html#get_paid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sg_ecg_tool.sg_ecg_tool.get_paid" title="Permalink to this definition">¶</a></dt>
+<dd><p>If you are particularly interested in how much you can expect to be paid, after graduating from your intended course, this function can be especially helpful. This can be used in conjunction with see_paid().
+You can key in a subject and university that you have some form of interest in, and get a full list of courses and the salary statistics of their graduates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subject</strong> (<em>List of Dicts. One of the preset list comprehensions that have been pre-defined. This is a compulsory argument to enter.</em>) – </p></li>
+<li><p><strong>university_shortname</strong> (<em>str. However</em><em>, </em><em>you can simply key in the variables that have been created as part of this package</em><em> (</em><em>e.g.</em><em>, </em><em>sg.NUS</em><em>, </em><em>sg.NTU</em><em>) </em><em>for convenience. This is a compulsory argument to enter.</em>) – </p></li>
+<li><p><strong>csv</strong> (<em>bool. If set to true</em><em>, </em><em>a csv file with this information will be saved to your working directory. It is False by default.</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>A Pandas DataFrame, containing the queried information regarding the subject, school of study and the anticipated salary rates.</em></p></li>
+<li><p><em>If csv=True, a csv file will also be generated.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sg_ecg_tool</span> <span class="kn">import</span> <span class="n">sg_ecg_tool</span> <span class="k">as</span> <span class="n">sg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sg</span><span class="o">.</span><span class="n">get_paid</span><span class="p">(</span><span class="n">sg</span><span class="o">.</span><span class="n">Humanities_SocialSci</span><span class="p">,</span> <span class="n">sg</span><span class="o">.</span><span class="n">NTU</span><span class="p">)</span>
+<span class="go">[DataFrame of 96 rows x 7 columns]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sg_ecg_tool.sg_ecg_tool.see_employ">
+<code class="sig-prename descclassname">sg_ecg_tool.sg_ecg_tool.</code><code class="sig-name descname">see_employ</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">subject</span></em>, <em class="sig-param"><span class="n">university_shortname</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sg_ecg_tool/sg_ecg_tool.html#see_employ"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sg_ecg_tool.sg_ecg_tool.see_employ" title="Permalink to this definition">¶</a></dt>
+<dd><p>If you already have some sense of what you might like to do, and where you might like to do it, this function can be especially helpful. This can be used in conjunction with get_employed().
+You can key in a subject and university that you have some form of interest in, and get a visualization of overall employment rate, over time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subject</strong> (<em>List of Dicts. One of the preset list comprehensions that have been pre-defined. This is a compulsory argument to enter.</em>) – </p></li>
+<li><p><strong>university_shortname</strong> (<em>str. However</em><em>, </em><em>you can simply key in the variables that have been created as part of this package</em><em> (</em><em>e.g.</em><em>, </em><em>sg.NUS</em><em>, </em><em>sg.NTU</em><em>) </em><em>for convenience. This is a compulsory argument to enter.</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A matplotlib.pyplot visualization, with year as the x-axis and mean employment rate as the y-axis.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sg_ecg_tool</span> <span class="kn">import</span> <span class="n">sg_ecg_tool</span> <span class="k">as</span> <span class="n">sg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sg</span><span class="o">.</span><span class="n">see_employ</span><span class="p">(</span><span class="n">sg</span><span class="o">.</span><span class="n">Law</span><span class="p">,</span> <span class="n">sg</span><span class="o">.</span><span class="n">SMU</span><span class="p">)</span>
+<span class="go">[Visualization]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sg_ecg_tool.sg_ecg_tool.see_opening">
+<code class="sig-prename descclassname">sg_ecg_tool.sg_ecg_tool.</code><code class="sig-name descname">see_opening</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">industry2</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sg_ecg_tool/sg_ecg_tool.html#see_opening"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sg_ecg_tool.sg_ecg_tool.see_opening" title="Permalink to this definition">¶</a></dt>
+<dd><p>If you are particularly interested in how many available job openings there are in a particular industry, this function can provide you with that information. This can be used in conjunction with explore_opening().
+You can key in an industry that you have some form of interest in, and get visualization of job vacancy rates, over 7 recent quarters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>industry2</strong> (<em>str. One of the preset strings</em><em>, </em><em>which signify a given industry. This is a compulsory argument to enter.</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A matplotlib.pyplot visualization, with quarters as the x-axis and job vacancy rate as the y-axis.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sg_ecg_tool</span> <span class="kn">import</span> <span class="n">sg_ecg_tool</span> <span class="k">as</span> <span class="n">sg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sg</span><span class="o">.</span><span class="n">see_opening</span><span class="p">(</span><span class="s1">&#39;paper products and publishing&#39;</span><span class="p">)</span>
+<span class="go">[Visualization]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sg_ecg_tool.sg_ecg_tool.see_paid">
+<code class="sig-prename descclassname">sg_ecg_tool.sg_ecg_tool.</code><code class="sig-name descname">see_paid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">subject</span></em>, <em class="sig-param"><span class="n">university_shortname</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sg_ecg_tool/sg_ecg_tool.html#see_paid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sg_ecg_tool.sg_ecg_tool.see_paid" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>If you are particularly interested in how much you can expect to be paid, after graduating from your intended course, this function can be especially helpful. This can be used in conjunction with get_paid().</p>
+<p>You can key in a subject and university that you have some form of interest in, and get a visualization of gross median salary of graduates from a particular type of course and university, over time.</p>
+<p>subject: List of Dicts. One of the preset list comprehensions that have been pre-defined. This is a compulsory argument to enter.</p>
+<p>university_shortname: str. However, you can simply key in the variables that have been created as part of this package (e.g., sg.NUS, sg.NTU) for convenience. This is a compulsory argument to enter.</p>
+<p>A matplotlib.pyplot visualization, with year as the x-axis and average gross monthly median salary as the y-axis.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sg_ecg_tool</span> <span class="kn">import</span> <span class="n">sg_ecg_tool</span> <span class="k">as</span> <span class="n">sg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sg</span><span class="o">.</span><span class="n">see_paid</span><span class="p">(</span><span class="n">sg</span><span class="o">.</span><span class="n">Education</span><span class="p">,</span> <span class="n">sg</span><span class="o">.</span><span class="n">NTU</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>[Visualization]</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-sg_ecg_tool">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-sg_ecg_tool" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">sg_ecg_tool</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conduct.html">Code of Conduct</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Kagen Lim.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/source/sg_ecg_tool.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
