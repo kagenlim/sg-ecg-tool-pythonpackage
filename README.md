@@ -1,8 +1,5 @@
 # sg_ecg_tool 
-
-![](https://github.com/kagenlim/sg_ecg_tool/workflows/build/badge.svg) (https://codecov.io/gh/kagenlim/sg_ecg_tool) ![Release](https://github.com/kagenlim/sg_ecg_tool/workflows/Release/badge.svg) 
-
-Python package that generates statistics on higher education and employment, for Singaporean students. 
+Python package that generates statistics on higher education and employment in Singapore. This was completed as a final project for a class at Columbia University.
 
 ## Installation
 
