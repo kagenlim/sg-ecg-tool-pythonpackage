@@ -9,7 +9,7 @@ $ pip install -i https://test.pypi.org/simple/ sg_ecg_tool
 
 ## Features
 
-There are seven functions in this package, that help students with varying levels of readiness prepare for their higher education decisions.
+There are seven functions in this package, that summarize statistics relevant to education and career guidance professionals, or students.
 
 ## Dependencies
 
@@ -272,14 +272,6 @@ DESCRIPTION
            >>> from sg_ecg_tool import sg_ecg_tool as sg
            >>> sg.see_paid(sg.Education, sg.NTU)
         [Visualization]
-
-## Documentation
-
-The official documentation is hosted on Read the Docs: https://sg_ecg_tool.readthedocs.io/en/latest/
-
-## Contributors
-
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/kagenlim/sg_ecg_tool/graphs/contributors).
 
 ### Credits
 
